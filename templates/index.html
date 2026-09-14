@@ -1,10 +1,176 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brillo Andino — Lavado de autos en Santiago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500;12..96,75..100,800&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petroleo:#0E3A46;
+    --agua:#17697E;
+    --espuma:#EAF4F5;
+    --amarillo:#F2B705;
+    --tinta:#08222A;
+    --display:"Bricolage Grotesque", system-ui, sans-serif;
+    --texto:"Karla", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--espuma);
+    color:var(--tinta);
+    font-family:var(--texto);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .contenedor{width:min(1080px, 92vw); margin-inline:auto;}
+  a:focus-visible{outline:2px solid var(--amarillo); outline-offset:3px;}
+
+  .barra{background:var(--petroleo); color:var(--espuma); padding-block:1.1rem;}
+  .barra .contenedor{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+  .marca{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:1.25rem;
+    letter-spacing:-.02em;
+    text-decoration:none;
+    color:var(--espuma);
+  }
+  .marca span{color:var(--amarillo);}
+  .menu{display:flex; gap:1.5rem;}
+  .menu a{color:var(--espuma); text-decoration:none; padding-bottom:3px; border-bottom:2px solid transparent;}
+  .menu a:hover{border-bottom-color:var(--amarillo);}
+  .menu a[aria-current="page"]{border-bottom-color:var(--espuma);}
+
+  .portada{background:var(--petroleo); color:var(--espuma); padding-block:3.5rem 4.5rem;}
+  .portada .contenedor{display:grid; grid-template-columns:1.15fr .85fr; gap:3rem; align-items:center;}
+  .portada h1{
+    font-family:var(--display);
+    font-weight:800;
+    font-variation-settings:"wdth" 88;
+    font-size:clamp(2.5rem, 6.4vw, 4.3rem);
+    line-height:.98;
+    letter-spacing:-.03em;
+    margin:0 0 1.2rem;
+  }
+  .portada p{max-width:46ch; font-size:1.1rem; color:#C9E2E7; margin:0 0 2rem;}
+  .boton{
+    display:inline-block;
+    background:var(--amarillo);
+    color:var(--tinta);
+    font-weight:600;
+    text-decoration:none;
+    padding:.85rem 1.6rem;
+    border-radius:999px;
+  }
+  .boton:hover{background:#FFD23F;}
+
+  .tina{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:24px;
+    background:linear-gradient(180deg, #14505F 0%, #0B2F3A 100%);
+    overflow:hidden;
+  }
+  .burbuja{
+    position:absolute;
+    bottom:-30%;
+    border-radius:50%;
+    border:2px solid rgba(234,244,245,.55);
+    background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.45), rgba(255,255,255,.04) 60%);
+    animation:subir 15s linear infinite;
+  }
+  @keyframes subir{
+    from{transform:translateY(0) translateX(0); opacity:0;}
+    12%{opacity:1;}
+    85%{opacity:1;}
+    to{transform:translateY(-150%) translateX(18px); opacity:0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .burbuja{animation:none; opacity:.75; bottom:auto; top:40%;}
+  }
+
+  .datos{padding-block:3rem 4rem;}
+  .datos dl{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2rem;
+    margin:0;
+    border-top:3px solid var(--petroleo);
+    padding-top:1.5rem;
+  }
+  .datos dt{font-family:var(--display); font-weight:500; color:var(--agua); margin-bottom:.2rem;}
+  .datos dd{margin:0; font-weight:600;}
+
+  footer{background:var(--petroleo); color:#A9CCD4; padding-block:1.5rem; font-size:.92rem;}
+
+  @media (max-width:760px){
+    .portada .contenedor{grid-template-columns:1fr; gap:2.2rem;}
+    .tina{order:-1; aspect-ratio:16/9;}
+    .datos dl{grid-template-columns:1fr; gap:1.2rem;}
+  }
+</style>
 </head>
 <body>
-    <h1>Bienvenido</h1>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Brillo<span>·</span>Andino</a>
+    <nav class="menu">
+      <a href="index.html" aria-current="page">Inicio</a>
+      <a href="about.html">Nosotros</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="portada">
+    <div class="contenedor">
+      <div>
+        <h1>Bienvenido a Brillo Andino</h1>
+        <p>Lavado a mano en Providencia desde 2014. Deja el auto en la mañana
+           y retíralo limpio por dentro y por fuera antes de las seis.</p>
+        <a class="boton" href="about.html">Ver servicios y precios</a>
+      </div>
+
+      <div class="tina" aria-hidden="true">
+        <span class="burbuja" style="left:12%; width:54px; height:54px; animation-delay:0s;    animation-duration:16s;"></span>
+        <span class="burbuja" style="left:34%; width:26px; height:26px; animation-delay:-3s;   animation-duration:11s;"></span>
+        <span class="burbuja" style="left:52%; width:78px; height:78px; animation-delay:-7s;   animation-duration:19s;"></span>
+        <span class="burbuja" style="left:70%; width:38px; height:38px; animation-delay:-1.5s; animation-duration:13s;"></span>
+        <span class="burbuja" style="left:84%; width:60px; height:60px; animation-delay:-9s;   animation-duration:17s;"></span>
+        <span class="burbuja" style="left:24%; width:18px; height:18px; animation-delay:-5s;   animation-duration:9s;"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="datos">
+    <div class="contenedor">
+      <dl>
+        <div>
+          <dt>Dirección</dt>
+          <dd>Av. Los Leones 1240, Providencia</dd>
+        </div>
+        <div>
+          <dt>Horario</dt>
+          <dd>Lunes a sábado, 9:00 a 18:00</dd>
+        </div>
+        <div>
+          <dt>Reservas</dt>
+          <dd>+56 9 5555 1240</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor">Brillo Andino · Providencia, Santiago</div>
+</footer>
+
 </body>
 </html>
