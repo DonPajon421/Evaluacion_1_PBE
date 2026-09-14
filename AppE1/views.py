@@ -7,5 +7,5 @@ from django.shortcuts import render
 def mostrar_home(request):
     return render(request, "index.html")
 
-def mostrar_servicio(request):
+def mostrar_servicios(request):
     return render(request, "about.html")

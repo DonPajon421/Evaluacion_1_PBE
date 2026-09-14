@@ -21,5 +21,5 @@ from AppE1 import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.mostrar_home, name="mostrar_home"),
-    path("servicio/", views.mostrar_servicio, name="mostrar_servicio"),
+    path("servicios/", views.mostrar_servicios, name="mostrar_servicios"),
 ]
