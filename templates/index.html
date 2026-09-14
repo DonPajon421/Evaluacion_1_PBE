@@ -121,8 +121,8 @@
   <div class="contenedor">
     <a class="marca" href="index.html">Brillo<span>·</span>Andino</a>
     <nav class="menu">
-      <a href="index.html" aria-current="page">Inicio</a>
-      <a href="about.html">Nosotros</a>
+      <a href="{% url 'mostrar_home' %}" aria-current="page">Inicio</a>
+      <a href="{% url 'mostrar_servicio' %}">Nosotros</a>
     </nav>
   </div>
 </header>

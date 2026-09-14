@@ -123,8 +123,8 @@
   <div class="contenedor">
     <a class="marca" href="index.html">Brillo<span>·</span>Andino</a>
     <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="about.html" aria-current="page">Nosotros</a>
+      <a href="{% url 'mostrar_home' %}">Inicio</a>
+      <a href="{% url 'mostrar_servicio' %}" aria-current="page">Nosotros</a>
     </nav>
   </div>
 </header>
