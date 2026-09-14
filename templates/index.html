@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio Cordillera 101.9 FM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche:#122A38;
+    --fondo-hondo:#0C1E28;
+    --niebla:#D7E0E2;
+    --niebla-tenue:#8FA5AC;
+    --senal:#E8B33C;
+    --onda:#7FB0A8;
+    --linea:rgba(215,224,226,.16);
+    --display:"Fraunces",Georgia,serif;
+    --texto:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--noche);
+    color:var(--niebla);
+    font-family:var(--texto);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .envoltura{max-width:64rem;margin:0 auto;padding:0 1.5rem}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--senal);outline-offset:3px}
+
+  header{border-bottom:1px solid var(--linea)}
+  .barra{display:flex;flex-wrap:wrap;gap:1rem;align-items:baseline;justify-content:space-between;padding:1.4rem 0}
+  .marca{font-family:var(--display);font-size:1.35rem;font-weight:600;text-decoration:none;letter-spacing:.01em}
+  .marca span{color:var(--senal)}
+  nav{display:flex;gap:1.5rem}
+  nav a{text-decoration:none;color:var(--niebla-tenue);padding-bottom:.2rem}
+  nav a:hover{color:var(--niebla)}
+  nav a[aria-current="page"]{color:var(--niebla);border-bottom:2px solid var(--senal)}
+
+  .aire{padding:4rem 0 3.5rem;border-bottom:1px solid var(--linea)}
+  .estado{display:flex;align-items:center;gap:.6rem;color:var(--senal);font-size:.95rem;margin:0 0 1rem}
+  .punto{width:.55rem;height:.55rem;border-radius:50%;background:var(--senal);flex:none;animation:latido 2.4s ease-in-out infinite}
+  @keyframes latido{0%,100%{opacity:1}50%{opacity:.25}}
+  .aire h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(2.6rem,8vw,4.6rem);
+    line-height:1.02;
+    margin:0 0 1rem;
+    max-width:14ch;
+  }
+  .ficha{color:var(--niebla-tenue);margin:0;max-width:48ch}
+  .ficha b{color:var(--niebla);font-weight:500}
+
+  section{padding:3.5rem 0}
+  h2{font-family:var(--display);font-weight:600;font-size:1.6rem;margin:0 0 1.75rem}
+
+  .grilla{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+  .grilla li{
+    display:grid;
+    grid-template-columns:5.5rem 1fr;
+    gap:.25rem 1.5rem;
+    padding:1rem 0 1rem 1rem;
+    border-bottom:1px solid var(--linea);
+    border-left:3px solid transparent;
+  }
+  .hora{color:var(--niebla-tenue);font-variant-numeric:tabular-nums}
+  .programa{font-weight:500}
+  .conduce{grid-column:2;color:var(--niebla-tenue);font-size:.92rem}
+  .grilla li.ahora{border-left-color:var(--senal);background:rgba(232,179,60,.06)}
+  .grilla li.ahora .hora,.grilla li.ahora .programa{color:var(--senal)}
+
+  .llamado{
+    margin-top:2rem;
+    display:inline-block;
+    text-decoration:none;
+    background:var(--senal);
+    color:var(--fondo-hondo);
+    font-weight:500;
+    padding:.7rem 1.4rem;
+    border-radius:2px;
+  }
+  .llamado:hover{background:#f3c65f}
+
+  footer{background:var(--fondo-hondo);padding:2.5rem 0;color:var(--niebla-tenue);font-size:.92rem}
+  footer p{margin:.3rem 0}
+  footer .dial{font-family:var(--display);color:var(--onda);font-size:1.2rem}
+
+  @media (prefers-reduced-motion:reduce){.punto{animation:none}}
+  @media (max-width:30rem){.grilla li{grid-template-columns:1fr}.conduce{grid-column:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="envoltura barra">
+    <a class="marca" href="index.html">Radio Cordillera <span>101.9</span></a>
+    <nav>
+      <a href="index.html" aria-current="page">Inicio</a>
+      <a href="about.html">Quiénes somos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="aire">
+    <div class="envoltura">
+      <p class="estado"><span class="punto" aria-hidden="true"></span> Al aire ahora</p>
+      <h1 id="programa-actual">Sesión de control</h1>
+      <p class="ficha">Conduce <b id="conduce-actual">Ignacio Pardo</b> · <span id="horario-actual">19:00 a 22:00</span>. Se escucha en 101.9 FM entre Renca y el cajón, y en parlante desde la ventana del segundo piso.</p>
+    </div>
+  </div>
+
+  <section class="envoltura">
+    <h2>La programación de hoy</h2>
+    <ul class="grilla" id="grilla">
+      <li data-inicio="7">
+        <span class="hora">07:00</span>
+        <span class="programa">Amanece con ruido</span>
+        <span class="conduce">Paula Vergara · noticias del barrio y micros que no pasan</span>
+      </li>
+      <li data-inicio="10">
+        <span class="hora">10:00</span>
+        <span class="programa">La ferretería</span>
+        <span class="conduce">Don Óscar responde consultas de oficio en vivo</span>
+      </li>
+      <li data-inicio="13">
+        <span class="hora">13:00</span>
+        <span class="programa">Almuerzo con tangos</span>
+        <span class="conduce">Selección de discos que trajo la gente</span>
+      </li>
+      <li data-inicio="16">
+        <span class="hora">16:00</span>
+        <span class="programa">Tarea para la casa</span>
+        <span class="conduce">Taller escolar abierto, con la radio como cuaderno</span>
+      </li>
+      <li data-inicio="19">
+        <span class="hora">19:00</span>
+        <span class="programa">Sesión de control</span>
+        <span class="conduce">Ignacio Pardo · bandas del sector tocando en el estudio</span>
+      </li>
+      <li data-inicio="22">
+        <span class="hora">22:00</span>
+        <span class="programa">Turno de noche</span>
+        <span class="conduce">Música larga y dedicatorias por teléfono</span>
+      </li>
+    </ul>
+    <a class="llamado" href="about.html">Conocer la radio</a>
+  </section>
+</main>
+
+<footer>
+  <div class="envoltura">
+    <p class="dial">101.9 FM</p>
+    <p>Estudio en Calle Los Aromos 244, segundo piso. Timbre que no suena: golpear la reja.</p>
+    <p>Dedicatorias al 2 2345 6789, todas las noches.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var filas = Array.prototype.slice.call(document.querySelectorAll('#grilla li'));
+    var hora = new Date().getHours();
+    var actual = filas[filas.length - 1];
+
+    filas.forEach(function (fila) {
+      if (hora >= Number(fila.dataset.inicio)) actual = fila;
+    });
+
+    var indice = filas.indexOf(actual);
+    var termina = filas[(indice + 1) % filas.length].querySelector('.hora').textContent;
+
+    actual.classList.add('ahora');
+    document.getElementById('programa-actual').textContent = actual.querySelector('.programa').textContent;
+    document.getElementById('conduce-actual').textContent = actual.querySelector('.conduce').textContent.split(' · ')[0];
+    document.getElementById('horario-actual').textContent =
+      actual.querySelector('.hora').textContent + ' a ' + termina;
+  })();
+</script>
+
+</body>
+</html>
